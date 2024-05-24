@@ -1,0 +1,5 @@
+pandas
+matplotlib
+numpy
+joblib
+easylogger4dev_alpha

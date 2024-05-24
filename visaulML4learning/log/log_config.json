@@ -1,0 +1,6 @@
+{
+    "json_log_path": "./log/jsons/log_2024-05-24--18-51-18.json",
+    "txt_log_path": "./log/txts/log_2024-05-24--18-51-18.txt",
+    "csv_log_path": "./log/csvs/log_2024-05-24--18-51-18.csv",
+    "excel_log_path": "./log/excels/log_2024-05-24--18-51-18.xlsx"
+}

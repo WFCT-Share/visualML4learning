@@ -1,0 +1,11 @@
+LICENSE.txt
+README.md
+setup.py
+tests/__init__.py
+tests/test_module.py
+visaulML4learning/__init__.py
+visualML4learning.egg-info/PKG-INFO
+visualML4learning.egg-info/SOURCES.txt
+visualML4learning.egg-info/dependency_links.txt
+visualML4learning.egg-info/requires.txt
+visualML4learning.egg-info/top_level.txt

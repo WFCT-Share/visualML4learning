@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: visualML4learning
+Version: 0.0.1
+Summary: A description of your package
+Author: DLMR-CODE
+Author-email: yuzhihao82@gmail.com
+License: MIT
+Keywords: machine_learning,dev,easy,alpha
+Requires-Python: >=3.10
+License-File: LICENSE.txt
+Requires-Dist: pandas
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: joblib
+Requires-Dist: easylogger4dev_alpha
