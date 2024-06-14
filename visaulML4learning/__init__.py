@@ -9,6 +9,7 @@ from easylogger4dev_alpha import *
 from abc import ABC, abstractmethod
 
 
+
 class KNNBase(ABC):
     """这是KNN的抽象基类，不可实例化，为各类KNN对象创造固定的规范"""
 
@@ -100,7 +101,7 @@ class KNNClassify(KNNBase):
     @log4csv("KNNClassify")
     def predict(self, data: np.array) -> np:
         """使用KNN模型进行预测"""
-        knn_check(self.X, self.y)
+        knn_check(self)
         if data.ndim == 2:
             result = np.zeros((data.shape[0]))
             for j in range(data.shape[0]):
@@ -193,7 +194,7 @@ class KNNRegressor(KNNBase):
     @log4csv("KNNRegressor")
     def predict(self, data):
         """使用KNN模型进行预测"""
-        knn_check(self.X, self.y)
+        knn_check(self)
         if data.ndim == 2:
             result = np.zeros((data.shape[0]))
             for j in range(data.shape[0]):
@@ -267,16 +268,21 @@ def check_weights(weights, X):
     pass
 
 
-def knn_check(X, y):
+def knn_check(KNN: KNNBase):
     """检查模型的数据是否被正确键入"""
-    if X is None:
+    if KNN.X is None:
         raise KNNError("特征矩阵X错误，未进行数据拟合")
-    if y is None:
+    if KNN.y is None:
         raise KNNError("回归结果向量y错误，未进行数据拟合")
+
+def knn_visual_check(KNN):
+    pass
+
 
 
 def check_path():
     pass
+
 
 
 class KNNError(Exception):
@@ -287,37 +293,6 @@ class KNNError(Exception):
         super().__init__(self.message)
 
 
-# def visualize_fit(self, X, y, test_point, ax=None):
-#     """
-#     可视化 KNN 算法拟合过程，通过绘制训练点并突出显示给定测试点的邻居点。
-#
-#     :args
-#         X (np.array): 训练数据的特征矩阵。
-#         y (np.array): 训练数据的目标向量。
-#         test_point (np.array): 需要预测并显示其 KNN 邻居的测试点。
-#         ax (matplotlib.axes.Axes, 可选): 绘图的轴。如果为 None，将创建新的图和轴。
-#
-#     :return
-#         matplotlib.axes.Axes: 绘图的轴。
-#     """
-#     if ax is None:
-#         fig, ax = plt.subplots()
-#
-#     # 绘制训练点
-#     for class_value in np.unique(y):
-#         class_indices = y == class_value
-#         ax.scatter(X[class_indices, 0], X[class_indices, 1], s=50, alpha=0.5, label=f'类别 {class_value}')
-#
-#     # 计算测试点到所有训练点的距离
-#     distances = np.linalg.norm(X - test_point, axis=1)
-#     # 获取最近邻居的索引
-#     neighbors_idx = np.argsort(distances)[:self.neighbors]
-#
-#     # 突出显示邻居
-#     ax.scatter(X[neighbors_idx, 0], X[neighbors_idx, 1], s=100, facecolors='none', edgecolors='r', label='邻居')
-#     # 绘制测试点
-#     ax.scatter(test_point[0], test_point[1], color='black', s=100, label='测试点')
-#
-#     ax.legend()
-#     plt.show()
-#     return ax
+class Visualizer():
+    def __init__(self, KNN: KNNBase):
+        knn_check(KNN)
