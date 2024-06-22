@@ -36,8 +36,9 @@ class FeatureEngineering(VisualizerBase):
     def columns_counts(self, columns):
         return self.data[columns].value_counts()
 
-    def column_hist(self):
-        super().hist(self.x, self.name + "—" + self.x.columns[0], self.x.columns[0])
+    def column_hist(self, columns):
+        for column in self.columns:
+            super().hist(self.data[column], self.name + "—" + self.x.columns[0], self.x.columns[0])
 
     def visualize(self):
         if self.x is None:
